@@ -1,0 +1,18 @@
+git clone git://www.aleph1.co.uk/yaffs2
+
+----how to patch yaffs2 to kernel source
+
+#cd yaffs2
+#./patch-ker.sh c m [kernelsourcedir]
+eg.
+#./patch-ker.sh c m ../linux-2.6.38.8
+
+!!!!! c/l  	c=copy
+		l=link
+	m/s	m=multiple
+		s=single
+
+here I used c m
+
+Because found compliling error when use c s
+
