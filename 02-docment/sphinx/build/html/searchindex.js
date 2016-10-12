@@ -1,0 +1,1 @@
+Search.setIndex({envversion:50,filenames:["index"],objects:{},objnames:{},objtypes:{},terms:{"contents:":0},titles:["Welcome to SphinxUsage&#8217;s documentation!"],titleterms:{"and ":0,"documentation!":0,"indices ":0,"s ":0,"sphinxusage'":0,"to ":0,"welcome ":0,tabl:0}})
