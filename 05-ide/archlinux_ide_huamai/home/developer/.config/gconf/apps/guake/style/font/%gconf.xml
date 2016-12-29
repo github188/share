@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="style" mtime="1436173924" type="string">
+		<stringvalue>Monospace 12</stringvalue>
+	</entry>
+	<entry name="palette_name" mtime="1436174783" type="string">
+		<stringvalue>Toy Chest</stringvalue>
+	</entry>
+	<entry name="palette" mtime="1436174783" type="string">
+		<stringvalue>#2C2C3F3F5757:#BEBE2D2D2626:#191991917171:#DADA8E8E2626:#32325D5D9696:#8A8A5D5DDBDB:#3535A0A08F8F:#2323D0D08282:#323268688989:#DDDD59594343:#3030CFCF7B7B:#E7E7D7D74B4B:#3333A5A5D9D9:#ADAD6B6BDCDC:#4141C3C3ADAD:#D4D4D4D4D4D4:#3030CFCF7B7B:#232336364A4A</stringvalue>
+	</entry>
+</gconf>

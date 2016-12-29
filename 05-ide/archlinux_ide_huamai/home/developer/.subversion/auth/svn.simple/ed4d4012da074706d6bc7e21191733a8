@@ -1,0 +1,13 @@
+K 8
+passtype
+V 13
+gnome-keyring
+K 15
+svn:realmstring
+V 51
+<http://192.168.0.156:8443> Subversion Repositories
+K 8
+username
+V 7
+cong.li
+END

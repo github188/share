@@ -1,0 +1,71 @@
+command_list="publish"
+
+BRANCHES=http://192.168.0.156:8443/svn/IPCAM_PU/branches
+TAGS=http://192.168.0.156:8443/svn/IPCAM_PU/tags
+DT=`date +%y%m%d`
+REL1=""
+REL2=""
+PU_INFO=""
+CMD=""
+
+#颜色定义
+C_BR="\033[1m\033[41m"
+C_R="\033[40;31;1m"
+C_G="\033[40;32;1m"
+C_B="\033[40;34;1m"
+C_W="\033[41;37;1;5m"
+C_E="\033[0m"
+#退格键
+stty erase "^H"
+
+function publish() {
+	export DT=`date +%y%m%d`
+	echo -ne $C_R"输入提交信息: "$C_E
+	read PU_INFO
+	echo -ne $C_G"=========================================\n"$C_E	
+	svn ls $BRANCHES
+	echo -ne $C_G"=========================================\n"$C_E	
+	echo -ne $C_R"输入1级路径: "$C_E
+	read REL1
+	if [ $REL1 == "2.0.3" ];then
+		echo -ne $C_G"=========================================\n"$C_E	
+		svn ls $BRANCHES/$REL1
+		echo -ne $C_G"=========================================\n"$C_E	
+		echo -ne $C_R"输入2级路径: "$C_E
+		read REL2
+		
+		CMD="svn copy ${BRANCHES}/${REL1}/${REL2} ${TAGS}/tag_test/2.0.3/HuaMai_${DT}_all_test -m \"LSJG-391 $PU_INFO\""
+		echo $CMD
+	elif [ $REL1 == "Custom_Dev" ];then
+		echo -ne $C_G"=========================================\n"$C_E	
+		svn ls $BRANCHES/$REL1
+		echo -ne $C_G"=========================================\n"$C_E	
+		echo -ne $C_R"输入2级路径: "$C_E
+		read REL2
+		
+		CMD="svn copy ${BRANCHES}/${REL1}/${REL2} ${TAGS}/tag_test/2.0.3/HuaMai_${DT}_${REL2}_test -m \"LSJG-391 $PU_INFO\""
+		echo $CMD
+	elif [ $REL1 == "Dev" ];then
+		echo -ne $C_G"=========================================\n"$C_E	
+		svn ls $BRANCHES/$REL1
+		echo -ne $C_G"=========================================\n"$C_E	
+		echo -ne $C_R"输入2级路径(除HuaMai_之外 eg:HuaMai_3520D-->输入:3520D): "$C_E
+		read REL2
+
+		CMD="svn copy ${BRANCHES}/${REL1}/HuaMai_${REL2} ${TAGS}/tag_test/2.0.3/HuaMai_${DT}_${REL2}_test -m \"LSJG-391 $PU_INFO\""
+		echo $CMD
+	fi
+
+	eval $CMD
+}
+
+function svndeltest() {
+	echo -ne $C_G"=========================================\n"$C_E	
+	svn ls ${TAGS}/tag_test/2.0.3
+	echo -ne $C_G"=========================================\n"$C_E	
+	echo -ne $C_R"输入路径(时间分支名 eg:HuaMai_150325_8806_8807_test-->输入:150508_8806_8807): "$C_E
+	read REL
+	CMD="svn rm ${TAGS}/tag_test/2.0.3/HuaMai_${REL}_test -m \"LSJG-391 删除过老分支\""
+	eval $CMD
+}
+

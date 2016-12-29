@@ -1,0 +1,321 @@
+[    38.302] 
+X.Org X Server 1.17.2
+Release Date: 2015-06-16
+[    38.302] X Protocol Version 11, Revision 0
+[    38.302] Build Operating System: Linux 4.0.4-2-ARCH i686 
+[    38.302] Current Operating System: Linux server-lee 4.1.6-1-ARCH #1 SMP PREEMPT Mon Aug 17 09:07:24 CEST 2015 i686
+[    38.302] Kernel command line: BOOT_IMAGE=../vmlinuz-linux root=/dev/sda3 rw initrd=../initramfs-linux.img
+[    38.302] Build Date: 17 July 2015  05:40:14PM
+[    38.302]  
+[    38.302] Current version of pixman: 0.32.6
+[    38.302] 	Before reporting problems, check http://wiki.x.org
+	to make sure that you have the latest version.
+[    38.302] Markers: (--) probed, (**) from config file, (==) default setting,
+	(++) from command line, (!!) notice, (II) informational,
+	(WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+[    38.302] (==) Log file: "/home/developer/.local/share/xorg/Xorg.0.log", Time: Tue Nov 17 17:40:13 2015
+[    38.336] (==) Using system config directory "/usr/share/X11/xorg.conf.d"
+[    38.373] (==) No Layout section.  Using the first Screen section.
+[    38.373] (==) No screen section available. Using defaults.
+[    38.373] (**) |-->Screen "Default Screen Section" (0)
+[    38.373] (**) |   |-->Monitor "<default monitor>"
+[    38.406] (==) No monitor specified for screen "Default Screen Section".
+	Using a default monitor configuration.
+[    38.406] (==) Automatically adding devices
+[    38.406] (==) Automatically enabling devices
+[    38.406] (==) Automatically adding GPU devices
+[    38.406] (==) FontPath set to:
+	/usr/share/fonts/misc/,
+	/usr/share/fonts/TTF/,
+	/usr/share/fonts/OTF/,
+	/usr/share/fonts/Type1/,
+	/usr/share/fonts/100dpi/,
+	/usr/share/fonts/75dpi/
+[    38.406] (==) ModulePath set to "/usr/lib/xorg/modules"
+[    38.406] (II) The server relies on udev to provide the list of input devices.
+	If no devices become available, reconfigure udev or disable AutoAddDevices.
+[    38.412] (II) Loader magic: 0x829f6c0
+[    38.412] (II) Module ABI versions:
+[    38.412] 	X.Org ANSI C Emulation: 0.4
+[    38.412] 	X.Org Video Driver: 19.0
+[    38.412] 	X.Org XInput driver : 21.1
+[    38.412] 	X.Org Server Extension : 9.0
+[    38.416] (II) systemd-logind: took control of session /org/freedesktop/login1/session/c2
+[    38.417] (II) xfree86: Adding drm device (/dev/dri/card0)
+[    38.417] (II) systemd-logind: got fd for /dev/dri/card0 226:0 fd 9 paused 0
+[    38.418] (--) PCI:*(0:0:2:0) 8086:0152:1458:d000 rev 9, Mem @ 0xf7800000/4194304, 0xe0000000/268435456, I/O @ 0x0000f000/64
+[    38.418] (WW) Open ACPI failed (/var/run/acpid.socket) (No such file or directory)
+[    38.426] (II) LoadModule: "glx"
+[    38.435] (II) Loading /usr/lib/xorg/modules/extensions/libglx.so
+[    38.456] (II) Module glx: vendor="X.Org Foundation"
+[    38.456] 	compiled for 1.17.2, module version = 1.0.0
+[    38.456] 	ABI class: X.Org Server Extension, version 9.0
+[    38.456] (==) AIGLX enabled
+[    38.456] (==) Matched intel as autoconfigured driver 0
+[    38.456] (==) Matched intel as autoconfigured driver 1
+[    38.456] (==) Matched modesetting as autoconfigured driver 2
+[    38.456] (==) Matched fbdev as autoconfigured driver 3
+[    38.456] (==) Matched vesa as autoconfigured driver 4
+[    38.456] (==) Assigned the driver to the xf86ConfigLayout
+[    38.456] (II) LoadModule: "intel"
+[    38.462] (II) Loading /usr/lib/xorg/modules/drivers/intel_drv.so
+[    38.490] (II) Module intel: vendor="X.Org Foundation"
+[    38.490] 	compiled for 1.17.2, module version = 2.99.917
+[    38.490] 	Module class: X.Org Video Driver
+[    38.490] 	ABI class: X.Org Video Driver, version 19.0
+[    38.490] (II) LoadModule: "modesetting"
+[    38.490] (II) Loading /usr/lib/xorg/modules/drivers/modesetting_drv.so
+[    38.499] (II) Module modesetting: vendor="X.Org Foundation"
+[    38.499] 	compiled for 1.17.2, module version = 1.17.2
+[    38.499] 	Module class: X.Org Video Driver
+[    38.499] 	ABI class: X.Org Video Driver, version 19.0
+[    38.499] (II) LoadModule: "fbdev"
+[    38.499] (II) Loading /usr/lib/xorg/modules/drivers/fbdev_drv.so
+[    38.510] (II) Module fbdev: vendor="X.Org Foundation"
+[    38.510] 	compiled for 1.17.0, module version = 0.4.4
+[    38.510] 	Module class: X.Org Video Driver
+[    38.510] 	ABI class: X.Org Video Driver, version 19.0
+[    38.510] (II) LoadModule: "vesa"
+[    38.510] (II) Loading /usr/lib/xorg/modules/drivers/vesa_drv.so
+[    38.512] (II) Module vesa: vendor="X.Org Foundation"
+[    38.512] 	compiled for 1.17.2, module version = 2.3.4
+[    38.512] 	Module class: X.Org Video Driver
+[    38.512] 	ABI class: X.Org Video Driver, version 19.0
+[    38.512] (II) intel: Driver for Intel(R) Integrated Graphics Chipsets:
+	i810, i810-dc100, i810e, i815, i830M, 845G, 854, 852GM/855GM, 865G,
+	915G, E7221 (i915), 915GM, 945G, 945GM, 945GME, Pineview GM,
+	Pineview G, 965G, G35, 965Q, 946GZ, 965GM, 965GME/GLE, G33, Q35, Q33,
+	GM45, 4 Series, G45/G43, Q45/Q43, G41, B43
+[    38.512] (II) intel: Driver for Intel(R) HD Graphics: 2000-6000
+[    38.512] (II) intel: Driver for Intel(R) Iris(TM) Graphics: 5100, 6100
+[    38.512] (II) intel: Driver for Intel(R) Iris(TM) Pro Graphics: 5200, 6200, P6300
+[    38.512] (II) modesetting: Driver for Modesetting Kernel Drivers: kms
+[    38.512] (II) FBDEV: driver for framebuffer: fbdev
+[    38.512] (II) VESA: driver for VESA chipsets: vesa
+[    38.512] (++) using VT number 2
+
+[    38.512] xf86EnableIOPorts: failed to set IOPL for I/O (Operation not permitted)
+[    38.516] (II) intel(0): Using Kernel Mode Setting driver: i915, version 1.6.0 20150327
+[    38.516] (II) intel(0): SNA compiled from 2.99.917-381-g5772556
+[    38.518] (WW) Falling back to old probe method for modesetting
+[    38.518] (WW) Falling back to old probe method for fbdev
+[    38.518] (II) Loading sub module "fbdevhw"
+[    38.518] (II) LoadModule: "fbdevhw"
+[    38.519] (II) Loading /usr/lib/xorg/modules/libfbdevhw.so
+[    38.528] (II) Module fbdevhw: vendor="X.Org Foundation"
+[    38.529] 	compiled for 1.17.2, module version = 0.0.2
+[    38.529] 	ABI class: X.Org Video Driver, version 19.0
+[    38.529] (WW) Falling back to old probe method for vesa
+[    38.529] (WW) VGA arbiter: cannot open kernel arbiter, no multi-card support
+[    38.540] (--) intel(0): Integrated Graphics Chipset: Intel(R) HD Graphics 2500
+[    38.540] (--) intel(0): CPU: x86, sse2, sse3, ssse3, sse4.1, sse4.2, avx; using a maximum of 4 threads
+[    38.540] (II) intel(0): Creating default Display subsection in Screen section
+	"Default Screen Section" for depth/fbbpp 24/32
+[    38.540] (==) intel(0): Depth 24, (--) framebuffer bpp 32
+[    38.540] (==) intel(0): RGB weight 888
+[    38.540] (==) intel(0): Default visual is TrueColor
+[    38.541] (II) intel(0): Output VGA1 has no monitor section
+[    38.541] (II) intel(0): Enabled output VGA1
+[    38.541] (--) intel(0): Using a maximum size of 256x256 for hardware cursors
+[    38.541] (II) intel(0): Output VIRTUAL1 has no monitor section
+[    38.541] (II) intel(0): Enabled output VIRTUAL1
+[    38.541] (--) intel(0): Output VGA1 using initial mode 1680x1050 on pipe 0
+[    38.541] (==) intel(0): TearFree disabled
+[    38.541] (==) intel(0): DPI set to (96, 96)
+[    38.541] (II) Loading sub module "dri2"
+[    38.541] (II) LoadModule: "dri2"
+[    38.541] (II) Module "dri2" already built-in
+[    38.541] (II) Loading sub module "present"
+[    38.541] (II) LoadModule: "present"
+[    38.541] (II) Module "present" already built-in
+[    38.541] (II) UnloadModule: "modesetting"
+[    38.541] (II) Unloading modesetting
+[    38.541] (II) UnloadModule: "fbdev"
+[    38.541] (II) Unloading fbdev
+[    38.541] (II) UnloadSubModule: "fbdevhw"
+[    38.541] (II) Unloading fbdevhw
+[    38.541] (II) UnloadModule: "vesa"
+[    38.541] (II) Unloading vesa
+[    38.542] (==) Depth 24 pixmap format is 32 bpp
+[    38.571] (II) intel(0): SNA initialized with Ivybridge (gen7, gt1) backend
+[    38.571] (==) intel(0): Backing store enabled
+[    38.572] (==) intel(0): Silken mouse enabled
+[    38.591] (II) intel(0): HW Cursor enabled
+[    38.591] (II) intel(0): RandR 1.2 enabled, ignore the following RandR disabled message.
+[    38.592] (==) intel(0): DPMS enabled
+[    38.592] (==) intel(0): Display hotplug detection enabled
+[    38.592] (II) intel(0): [DRI2] Setup complete
+[    38.592] (II) intel(0): [DRI2]   DRI driver: i965
+[    38.592] (II) intel(0): [DRI2]   VDPAU driver: va_gl
+[    38.592] (II) intel(0): direct rendering: DRI2 enabled
+[    38.592] (II) intel(0): hardware support for Present enabled
+[    38.592] (--) RandR disabled
+[    38.656] (II) AIGLX: enabled GLX_MESA_copy_sub_buffer
+[    38.656] (II) AIGLX: enabled GLX_ARB_create_context
+[    38.656] (II) AIGLX: enabled GLX_ARB_create_context_profile
+[    38.656] (II) AIGLX: enabled GLX_EXT_create_context_es2_profile
+[    38.656] (II) AIGLX: enabled GLX_INTEL_swap_event
+[    38.656] (II) AIGLX: enabled GLX_SGI_swap_control and GLX_MESA_swap_control
+[    38.656] (II) AIGLX: enabled GLX_EXT_framebuffer_sRGB
+[    38.656] (II) AIGLX: enabled GLX_ARB_fbconfig_float
+[    38.656] (II) AIGLX: GLX_EXT_texture_from_pixmap backed by buffer objects
+[    38.656] (II) AIGLX: enabled GLX_ARB_create_context_robustness
+[    38.657] (II) AIGLX: Loaded and initialized i965
+[    38.657] (II) GLX: Initialized DRI2 GL provider for screen 0
+[    38.661] (II) intel(0): switch to mode 1680x1050@60.0 on VGA1 using pipe 0, position (0, 0), rotation normal, reflection none
+[    38.661] (II) intel(0): Setting screen physical size to 444 x 277
+[    38.744] (II) config/udev: Adding input device Power Button (/dev/input/event4)
+[    38.744] (**) Power Button: Applying InputClass "evdev keyboard catchall"
+[    38.744] (**) Power Button: Applying InputClass "libinput keyboard catchall"
+[    38.744] (II) LoadModule: "libinput"
+[    38.744] (II) Loading /usr/lib/xorg/modules/input/libinput_drv.so
+[    38.757] (II) Module libinput: vendor="X.Org Foundation"
+[    38.757] 	compiled for 1.17.2, module version = 0.14.0
+[    38.757] 	Module class: X.Org XInput Driver
+[    38.757] 	ABI class: X.Org XInput driver, version 21.1
+[    38.757] (II) systemd-logind: got fd for /dev/input/event4 13:68 fd 13 paused 0
+[    38.757] (II) Using input driver 'libinput' for 'Power Button'
+[    38.757] (**) Power Button: always reports core events
+[    38.757] (**) Option "Device" "/dev/input/event4"
+[    38.758] (II) input device 'Power Button', /dev/input/event4 is tagged by udev as: Keyboard
+[    38.758] (II) input device 'Power Button', /dev/input/event4 is a keyboard
+[    38.758] (**) Option "config_info" "udev:/sys/devices/LNXSYSTM:00/LNXPWRBN:00/input/input6/event4"
+[    38.758] (II) XINPUT: Adding extended input device "Power Button" (type: KEYBOARD, id 6)
+[    38.758] (II) input device 'Power Button', /dev/input/event4 is tagged by udev as: Keyboard
+[    38.758] (II) input device 'Power Button', /dev/input/event4 is a keyboard
+[    38.759] (II) config/udev: Adding input device Video Bus (/dev/input/event11)
+[    38.759] (**) Video Bus: Applying InputClass "evdev keyboard catchall"
+[    38.759] (**) Video Bus: Applying InputClass "libinput keyboard catchall"
+[    38.759] (II) systemd-logind: got fd for /dev/input/event11 13:75 fd 16 paused 0
+[    38.759] (II) Using input driver 'libinput' for 'Video Bus'
+[    38.759] (**) Video Bus: always reports core events
+[    38.759] (**) Option "Device" "/dev/input/event11"
+[    38.759] (II) input device 'Video Bus', /dev/input/event11 is tagged by udev as: Keyboard
+[    38.759] (II) input device 'Video Bus', /dev/input/event11 is a keyboard
+[    38.760] (**) Option "config_info" "udev:/sys/devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/LNXVIDEO:00/input/input14/event11"
+[    38.760] (II) XINPUT: Adding extended input device "Video Bus" (type: KEYBOARD, id 7)
+[    38.760] (II) input device 'Video Bus', /dev/input/event11 is tagged by udev as: Keyboard
+[    38.760] (II) input device 'Video Bus', /dev/input/event11 is a keyboard
+[    38.760] (II) config/udev: Adding input device Power Button (/dev/input/event3)
+[    38.760] (**) Power Button: Applying InputClass "evdev keyboard catchall"
+[    38.760] (**) Power Button: Applying InputClass "libinput keyboard catchall"
+[    38.761] (II) systemd-logind: got fd for /dev/input/event3 13:67 fd 17 paused 0
+[    38.761] (II) Using input driver 'libinput' for 'Power Button'
+[    38.761] (**) Power Button: always reports core events
+[    38.761] (**) Option "Device" "/dev/input/event3"
+[    38.761] (II) input device 'Power Button', /dev/input/event3 is tagged by udev as: Keyboard
+[    38.761] (II) input device 'Power Button', /dev/input/event3 is a keyboard
+[    38.761] (**) Option "config_info" "udev:/sys/devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input5/event3"
+[    38.761] (II) XINPUT: Adding extended input device "Power Button" (type: KEYBOARD, id 8)
+[    38.761] (II) input device 'Power Button', /dev/input/event3 is tagged by udev as: Keyboard
+[    38.761] (II) input device 'Power Button', /dev/input/event3 is a keyboard
+[    38.762] (II) config/udev: Adding input device PixArt USB Optical Mouse (/dev/input/event0)
+[    38.762] (**) PixArt USB Optical Mouse: Applying InputClass "evdev pointer catchall"
+[    38.762] (**) PixArt USB Optical Mouse: Applying InputClass "libinput pointer catchall"
+[    38.763] (II) systemd-logind: got fd for /dev/input/event0 13:64 fd 18 paused 0
+[    38.763] (II) Using input driver 'libinput' for 'PixArt USB Optical Mouse'
+[    38.763] (**) PixArt USB Optical Mouse: always reports core events
+[    38.763] (**) Option "Device" "/dev/input/event0"
+[    38.763] (II) input device 'PixArt USB Optical Mouse', /dev/input/event0 is tagged by udev as: Mouse
+[    38.763] (II) input device 'PixArt USB Optical Mouse', /dev/input/event0 is a pointer caps
+[    38.763] (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-3/3-3:1.0/0003:0461:4E22.0001/input/input2/event0"
+[    38.763] (II) XINPUT: Adding extended input device "PixArt USB Optical Mouse" (type: MOUSE, id 9)
+[    38.763] (**) Option "AccelerationScheme" "none"
+[    38.763] (**) PixArt USB Optical Mouse: (accel) selected scheme none/0
+[    38.763] (**) PixArt USB Optical Mouse: (accel) acceleration factor: 2.000
+[    38.763] (**) PixArt USB Optical Mouse: (accel) acceleration threshold: 4
+[    38.764] (II) input device 'PixArt USB Optical Mouse', /dev/input/event0 is tagged by udev as: Mouse
+[    38.764] (II) input device 'PixArt USB Optical Mouse', /dev/input/event0 is a pointer caps
+[    38.764] (II) config/udev: Adding input device PixArt USB Optical Mouse (/dev/input/mouse0)
+[    38.764] (II) No input driver specified, ignoring this device.
+[    38.764] (II) This device may have been added with another device file.
+[    38.764] (II) config/udev: Adding input device USB USB Keyboard (/dev/input/event1)
+[    38.764] (**) USB USB Keyboard: Applying InputClass "evdev keyboard catchall"
+[    38.764] (**) USB USB Keyboard: Applying InputClass "libinput keyboard catchall"
+[    38.765] (II) systemd-logind: got fd for /dev/input/event1 13:65 fd 19 paused 0
+[    38.765] (II) Using input driver 'libinput' for 'USB USB Keyboard'
+[    38.765] (**) USB USB Keyboard: always reports core events
+[    38.765] (**) Option "Device" "/dev/input/event1"
+[    38.765] (II) input device 'USB USB Keyboard', /dev/input/event1 is tagged by udev as: Keyboard
+[    38.765] (II) input device 'USB USB Keyboard', /dev/input/event1 is a keyboard
+[    38.765] (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-4/3-4:1.0/0003:1A2C:0C21.0002/input/input3/event1"
+[    38.765] (II) XINPUT: Adding extended input device "USB USB Keyboard" (type: KEYBOARD, id 10)
+[    38.766] (II) input device 'USB USB Keyboard', /dev/input/event1 is tagged by udev as: Keyboard
+[    38.766] (II) input device 'USB USB Keyboard', /dev/input/event1 is a keyboard
+[    38.766] (II) config/udev: Adding input device USB USB Keyboard (/dev/input/event2)
+[    38.766] (**) USB USB Keyboard: Applying InputClass "evdev pointer catchall"
+[    38.766] (**) USB USB Keyboard: Applying InputClass "evdev keyboard catchall"
+[    38.766] (**) USB USB Keyboard: Applying InputClass "libinput pointer catchall"
+[    38.766] (**) USB USB Keyboard: Applying InputClass "libinput keyboard catchall"
+[    38.767] (II) systemd-logind: got fd for /dev/input/event2 13:66 fd 20 paused 0
+[    38.767] (II) Using input driver 'libinput' for 'USB USB Keyboard'
+[    38.767] (**) USB USB Keyboard: always reports core events
+[    38.767] (**) Option "Device" "/dev/input/event2"
+[    38.767] (II) input device 'USB USB Keyboard', /dev/input/event2 is tagged by udev as: Keyboard Mouse
+[    38.767] (II) input device 'USB USB Keyboard', /dev/input/event2 is a pointer caps
+[    38.767] (II) input device 'USB USB Keyboard', /dev/input/event2 is a keyboard
+[    38.767] (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-4/3-4:1.1/0003:1A2C:0C21.0003/input/input4/event2"
+[    38.767] (II) XINPUT: Adding extended input device "USB USB Keyboard" (type: MOUSE, id 11)
+[    38.767] (**) Option "AccelerationScheme" "none"
+[    38.768] (**) USB USB Keyboard: (accel) selected scheme none/0
+[    38.768] (**) USB USB Keyboard: (accel) acceleration factor: 2.000
+[    38.768] (**) USB USB Keyboard: (accel) acceleration threshold: 4
+[    38.768] (II) input device 'USB USB Keyboard', /dev/input/event2 is tagged by udev as: Keyboard Mouse
+[    38.768] (II) input device 'USB USB Keyboard', /dev/input/event2 is a pointer caps
+[    38.768] (II) input device 'USB USB Keyboard', /dev/input/event2 is a keyboard
+[    38.768] (II) config/udev: Adding input device USB USB Keyboard (/dev/input/mouse1)
+[    38.768] (II) No input driver specified, ignoring this device.
+[    38.768] (II) This device may have been added with another device file.
+[    38.769] (II) config/udev: Adding input device HDA Intel PCH Rear Mic (/dev/input/event7)
+[    38.769] (II) No input driver specified, ignoring this device.
+[    38.769] (II) This device may have been added with another device file.
+[    38.769] (II) config/udev: Adding input device HDA Intel PCH Front Mic (/dev/input/event8)
+[    38.769] (II) No input driver specified, ignoring this device.
+[    38.769] (II) This device may have been added with another device file.
+[    38.769] (II) config/udev: Adding input device HDA Intel PCH Line (/dev/input/event9)
+[    38.769] (II) No input driver specified, ignoring this device.
+[    38.769] (II) This device may have been added with another device file.
+[    38.769] (II) config/udev: Adding input device HDA Intel PCH Line Out (/dev/input/event10)
+[    38.769] (II) No input driver specified, ignoring this device.
+[    38.769] (II) This device may have been added with another device file.
+[    38.770] (II) config/udev: Adding input device HDA Digital PCBeep (/dev/input/event6)
+[    38.770] (II) No input driver specified, ignoring this device.
+[    38.770] (II) This device may have been added with another device file.
+[    38.770] (II) config/udev: Adding input device PC Speaker (/dev/input/event5)
+[    38.770] (II) No input driver specified, ignoring this device.
+[    38.770] (II) This device may have been added with another device file.
+[    40.220] (II) intel(0): EDID vendor "AOC", prod id 8727
+[    40.220] (II) intel(0): Using EDID range info for horizontal sync
+[    40.220] (II) intel(0): Using EDID range info for vertical refresh
+[    40.220] (II) intel(0): Printing DDC gathered Modelines:
+[    40.220] (II) intel(0): Modeline "1680x1050"x0.0  146.00  1680 1784 1960 2240  1050 1053 1059 1089 +hsync -vsync (65.2 kHz eP)
+[    40.220] (II) intel(0): Modeline "800x600"x0.0   40.00  800 840 968 1056  600 601 605 628 +hsync +vsync (37.9 kHz e)
+[    40.220] (II) intel(0): Modeline "800x600"x0.0   36.00  800 824 896 1024  600 601 603 625 +hsync +vsync (35.2 kHz e)
+[    40.220] (II) intel(0): Modeline "640x480"x0.0   31.50  640 656 720 840  480 481 484 500 -hsync -vsync (37.5 kHz e)
+[    40.220] (II) intel(0): Modeline "640x480"x0.0   31.50  640 664 704 832  480 489 492 520 -hsync -vsync (37.9 kHz e)
+[    40.220] (II) intel(0): Modeline "640x480"x0.0   30.24  640 704 768 864  480 483 486 525 -hsync -vsync (35.0 kHz e)
+[    40.220] (II) intel(0): Modeline "640x480"x0.0   25.18  640 656 752 800  480 490 492 525 -hsync -vsync (31.5 kHz e)
+[    40.220] (II) intel(0): Modeline "720x400"x0.0   28.32  720 738 846 900  400 412 414 449 -hsync +vsync (31.5 kHz e)
+[    40.220] (II) intel(0): Modeline "1280x1024"x0.0  135.00  1280 1296 1440 1688  1024 1025 1028 1066 +hsync +vsync (80.0 kHz e)
+[    40.220] (II) intel(0): Modeline "1024x768"x0.0   78.75  1024 1040 1136 1312  768 769 772 800 +hsync +vsync (60.0 kHz e)
+[    40.220] (II) intel(0): Modeline "1024x768"x0.0   75.00  1024 1048 1184 1328  768 771 777 806 -hsync -vsync (56.5 kHz e)
+[    40.220] (II) intel(0): Modeline "1024x768"x0.0   65.00  1024 1048 1184 1344  768 771 777 806 -hsync -vsync (48.4 kHz e)
+[    40.220] (II) intel(0): Modeline "832x624"x0.0   57.28  832 864 928 1152  624 625 628 667 -hsync -vsync (49.7 kHz e)
+[    40.220] (II) intel(0): Modeline "800x600"x0.0   49.50  800 816 896 1056  600 601 604 625 +hsync +vsync (46.9 kHz e)
+[    40.220] (II) intel(0): Modeline "800x600"x0.0   50.00  800 856 976 1040  600 637 643 666 +hsync +vsync (48.1 kHz e)
+[    40.220] (II) intel(0): Modeline "1024x768"x72.0   78.43  1024 1080 1192 1360  768 769 772 801 -hsync +vsync (57.7 kHz e)
+[    40.220] (II) intel(0): Modeline "1280x1024"x0.0  108.00  1280 1328 1440 1688  1024 1025 1028 1066 +hsync +vsync (64.0 kHz e)
+[    40.220] (II) intel(0): Modeline "1280x1024"x70.0  128.94  1280 1368 1504 1728  1024 1025 1028 1066 -hsync +vsync (74.6 kHz e)
+[    40.220] (II) intel(0): Modeline "1280x1024"x72.0  132.75  1280 1368 1504 1728  1024 1025 1028 1067 -hsync +vsync (76.8 kHz e)
+[    40.220] (II) intel(0): Modeline "1280x960"x0.0  108.00  1280 1376 1488 1800  960 961 964 1000 +hsync +vsync (60.0 kHz e)
+[    40.220] (II) intel(0): Modeline "1680x1050"x0.0  146.25  1680 1784 1960 2240  1050 1053 1059 1089 -hsync +vsync (65.3 kHz e)
+[    40.220] (II) intel(0): Modeline "1440x900"x0.0  106.50  1440 1520 1672 1904  900 903 909 934 -hsync +vsync (55.9 kHz e)
+[    40.220] (II) intel(0): Modeline "1440x900"x0.0  136.75  1440 1536 1688 1936  900 903 909 942 -hsync +vsync (70.6 kHz e)
+[   389.394] (**) Option "fd" "13"
+[   389.394] (**) Option "fd" "16"
+[   389.395] (**) Option "fd" "17"
+[   389.395] (**) Option "fd" "18"
+[   389.395] (**) Option "fd" "19"
+[   389.395] (**) Option "fd" "20"
+[   389.395] (II) UnloadModule: "libinput"
+[   389.395] (II) systemd-logind: releasing fd for 13:66

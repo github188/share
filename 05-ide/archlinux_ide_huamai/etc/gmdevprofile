@@ -1,0 +1,677 @@
+
+#颜色定义
+C_BR="\33[1m\33[41m"
+C_R="\033[40;31;1m"
+C_G="\033[40;32;1m"
+C_B="\033[40;34;1m"
+C_W="\033[41;37;1;5m"
+C_E="\033[0m"
+
+#DIRS
+
+D_TOP_HuaMai=/usr/src/IPCamera/HuaMai
+D_TOP_SDK=/usr/src/IPCamera/SDK
+
+D_CMN=$D_TOP_HuaMai/Common
+
+D_CMN_MDL=$D_CMN/module
+D_CMN_LIBS=$D_CMN/module/lib
+
+D_CMN_MDL_SRC=$D_CMN_MDL/src
+D_CMN_MDL_INC=$D_CMN_MDL/include
+
+D_3512=$D_TOP_SDK/H264_HI3512
+D_3515=$D_TOP_SDK/H264_HI3515
+D_3520=$D_TOP_SDK/H264_HI3520
+D_3518C=$D_TOP_SDK/H264_HI3518C
+D_3515A=$D_TOP_SDK/H264_HI3515A
+D_3520A=$D_TOP_SDK/H264_HI3520A
+D_8126=$D_TOP_SDK/H264_GM8126
+D_8126N=$D_TOP_SDK/H264_GM8126N
+D_8161=$D_TOP_SDK/H264_GM8161
+D_8180=$D_TOP_SDK/H264_GM8180
+
+function export_common(){
+    export CC="arm-linux-gcc"
+    export CXX="arm-linux-g++"
+    export STRIP="arm-linux-strip"
+
+    #dirs
+    export D_TOP_SDK=$D_TOP_SDK
+    export D_TOP_HuaMai=$D_TOP_HuaMai
+    export D_CMN=$D_CMN
+    export D_CMN_MDL=$D_CMN_MDL
+    export D_CMN_MDL_SRC=$D_CMN_MDL_SRC
+    export D_CMN_MDL_INC=$D_CMN_MDL_INC
+
+    export D_3512=$D_3512
+    export D_3515=$D_3515
+    export D_3518C=$D_3518C
+    export D_3515A=$D_3515A
+    export D_3520=$D_3520
+    export D_3520A=$D_3520A
+    export D_8126=$D_8126
+    export D_8126N=$D_8126N
+    export D_8161=$D_8161
+    export D_8180=$D_8180
+
+    # export DIRTOP=$DIRTOP
+    # export DIRCOMMON=$D_CMN
+    # export D_CMN_MDL=$D_CMN_MDL
+    # export D_CMN_MDL_SRC=$D_CMN_MDL_SRC
+    # export D_CMN_MDL_INC=$D_CMN_MDL_INC
+    # export DIRCOMMON_MODULE_SO=$DIRCOMMON_MODULE_SO
+    # export DIRCOMMON_MODULE_A=$DIRCOMMON_MODULE_A
+}
+
+function show_env(){
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" CC "$CC"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" CXX "$CXX"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" STRIP "$STRIP"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" D_TOP_HuaMai "$D_TOP_HuaMai"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" D_TOP_SDK "$D_TOP_SDK"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" D_CMN "$D_CMN"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" D_CMN_MDL "$D_CMN_MDL"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" D_CMN_MDL_SRC "$D_CMN_MDL_SRC"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" D_CMN_MDL_INC "$D_CMN_MDL_INC"
+
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" D_SCHEME "$D_SCHEME"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" D_SERVER "$D_SERVER"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" D_LINUX "$D_LINUX"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" D_MODULE_SO "$D_MODULE_SO"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" D_LIB_SO "$D_LIB_SO"
+    printf "$C_G""export""$C_E"" %16.16s = %-256.256s\n" INC_SDK "$INC_SDK"
+}
+
+#-----------------------------------------------------#
+if [ -z "$devtool" ];then
+    if [ $UID = 0 ];then
+        devtool=/$USER/.hmdevtool_`id -u`
+    else
+        devtool=/home/$USER/.hmdevtool_`id -u`
+    fi
+    export devtool
+fi
+
+if [ ! -e $devtool ];then
+    echo -e "$C_BR创建开发工具目录$C_E"
+    mkdir -p $devtool
+fi
+
+
+function set8161(){
+    echo --------------------------------
+    if [ -e $devtool/bin ];then
+         echo 
+        echo -e "$C_BR解除以前工具链接.$C_E"
+        unlink $devtool/bin
+    fi
+    echo 
+    echo -e "$C_BR切换到 8161 开发工具链.$C_E"
+    ln -s /opt/toolchain/bin/ $devtool/bin
+    echo 8161 >$devtool/devplatform
+
+    export_common
+    export D_SCHEME=$D_8161
+    export D_SERVER=$D_TOP_HuaMai/Server/8161
+    export D_LINUX=$D_8161/linux-2.6.14-fa
+    export D_MODULE_SO=$D_CMN/rootfs/rootfs.module/8161/lib
+    export D_LIB_SO=$D_CMN/rootfs/rootfs.static/8161/lib
+    export INC_SDK=""
+    show_env
+
+    echo 
+    echo --------------------------------
+}
+
+function set8180(){
+    echo --------------------------------
+    if [ -e $devtool/bin ];then
+        echo
+        echo -e "\33[1m\33[41m 解除以前工具链接.\33[0m"
+        unlink $devtool/bin
+    fi
+    echo 
+    echo -e "\33[1m\33[41m 切换到 8180 开发工具链.\33[0m" 
+    ln -s /opt/crosstool/arm-linux/gcc-3.4.4-glibc-2.3.5/arm-linux/bin/ $devtool/bin
+    echo 8180 >$devtool/devplatform
+
+    export_common
+    export D_SCHEME=$D_8180
+    export D_SERVER=$D_TOP_HuaMai/Server/8161
+    export D_LINUX=$D_8180/linux-2.6.14-fa
+    export D_MODULE_SO=$D_CMN/rootfs/rootfs.module/8180/lib
+    export D_LIB_SO=$D_CMN/rootfs/rootfs.static/8180/lib
+    export INC_SDK=""
+    show_env
+
+    echo
+    echo --------------------------------
+}
+
+function set8126(){
+    echo --------------------------------
+    if [ -e $devtool/bin ];then
+        echo
+        echo -e "\33[1m\33[41m 解除以前工具链接.\33[0m"
+        unlink $devtool/bin
+    fi
+    echo 
+    echo -e "\33[1m\33[41m 切换到 8126 开发工具链.\33[0m" 
+    ln -s /opt/crosstool/arm-none-linux-gnueabi-4.4.0_ARMv5TE/bin/ $devtool/bin
+    echo 8126 >$devtool/devplatform
+
+    export_common
+    export D_SCHEME=$D_8126
+    export D_SERVER=$D_TOP_HuaMai/Server/8126
+    export D_LINUX=$D_8126/linux-2.6.28-fa
+    export D_MODULE_SO=$D_CMN/rootfs/rootfs.module/8126/lib
+    export D_LIB_SO=$D_CMN/rootfs/rootfs.static/8126/lib
+    export INC_SDK="-I$D_SCHEME/module/include/dvr -I$D_SCHEME/module/include/vcap200_v3 -I$D_SCHEME/module/include/isp210_v2 -I$D_SCHEME/module/include/pwm"
+    show_env
+
+    echo 
+    echo --------------------------------
+}
+
+function set8126N(){
+    echo --------------------------------
+    if [ -e $devtool/bin ];then
+        echo
+        echo -e "\33[1m\33[41m 解除以前工具链接.\33[0m"
+        unlink $devtool/bin
+    fi
+    echo 
+    echo -e "\33[1m\33[41m 切换到 8126n 开发工具链.\33[0m" 
+    ln -s /opt/crosstool/arm-none-linux-gnueabi-4.4.0_ARMv5TE/bin/ $devtool/bin
+    echo 8126 >$devtool/devplatform
+
+    export_common
+    export D_SCHEME=$D_8126N
+    export D_SERVER=$D_TOP_HuaMai/Server/8126
+    export D_LINUX=$D_8126N/linux-2.6.28-fa
+    export D_MODULE_SO=$D_CMN/rootfs/rootfs.module/8126N/lib
+    export D_LIB_SO=$D_CMN/rootfs/rootfs.static/8126N/lib
+    export INC_SDK="-I$D_SCHEME/module/include/dvr -I$D_SCHEME/module/include/vcap200_v3 -I$D_SCHEME/module/include/isp210_v2 -I$D_SCHEME/module/include/pwm"
+    show_env
+
+    echo 
+    echo --------------------------------
+}
+
+function set3512(){
+    echo --------------------------------
+    if [ -e $devtool/bin ];then
+        echo
+        echo -e "\33[1m\33[41m 解除以前工具链接.\33[0m"
+        unlink $devtool/bin
+    fi
+    echo 
+    echo -e "\33[1m\33[41m 切换到 3512 开发工具链.\33[0m" 
+    ln -s /opt/hisi-linux/x86-arm/gcc-3.4.3-uClibc-0.9.28/usr/bin/ $devtool/bin
+    echo 3512 >$devtool/devplatform
+
+    export_common
+    export D_SCHEME=$D_3512
+    export D_SERVER=$D_TOP_HuaMai/Server/3512
+    export D_LINUX=$D_3512/source/os/linux-2.6.14
+    export D_MODULE_SO=$D_CMN/rootfs/rootfs.module/3512/lib
+    export D_LIB_SO=$D_CMN/rootfs/rootfs.static/3512/lib
+    export INC_SDK="-I$D_SCHEME/pub/include -I$D_SCHEME/mpp/include -I$D_SCHEME/mpp/include/mkp -I$D_SCHEME/mpp/sample"
+    show_env
+
+    echo 
+    echo --------------------------------
+}
+
+function set3515(){
+    echo --------------------------------
+    if [ -e $devtool/bin ];then
+        echo
+        echo -e "\33[1m\33[41m 解除以前工具链接.\33[0m"
+        unlink $devtool/bin
+    fi
+    echo 
+    echo -e "\33[1m\33[41m 切换到 3515 开发工具链.\33[0m" 
+    ln -s /opt/hisi-linux/x86-arm/gcc-3.4.3-uClibc-0.9.28/usr/bin/ $devtool/bin
+    echo 3515 >$devtool/devplatform
+
+    export_common
+    export D_SCHEME=$D_3515
+    export D_SERVER=$D_TOP_HuaMai/Server/3512
+    export D_LINUX=$D_3515/source/os/linux-2.6.14
+    export D_MODULE_SO=$D_CMN/rootfs/rootfs.module/3515/lib
+    export D_LIB_SO=$D_CMN/rootfs/rootfs.static/3515/lib
+    export INC_SDK="-I$D_SCHEME/pub/include -I$D_SCHEME/mpp/include -I$D_SCHEME/mpp/include/mkp -I$D_SCHEME/mpp/sample"
+    show_env
+
+    echo 
+    echo --------------------------------
+}
+
+function set3520(){
+    echo --------------------------------
+    if [ -e $devtool/bin ];then
+        echo
+        echo -e "\33[1m\33[41m 解除以前工具链接.\33[0m"
+        unlink $devtool/bin
+    fi
+    echo 
+    echo -e "\33[1m\33[41m 切换到 3520 开发工具链.\33[0m" 
+    ln -s /opt/hisi-linux/x86-arm/gcc-3.4.3-uClibc-0.9.28/usr/bin/ $devtool/bin
+    echo 3520 >$devtool/devplatform
+
+    export_common
+    export D_SCHEME=$D_3520
+    export D_SERVER=$D_TOP_HuaMai/Server/3512
+    export D_LINUX=$D_3520/source/os/linux-2.6.14
+    export D_MODULE_SO=$D_CMN/rootfs/rootfs.module/3520/lib
+    export D_LIB_SO=$D_CMN/rootfs/rootfs.static/3520/lib
+    export INC_SDK="-I$D_SCHEME/pub/include -I$D_SCHEME/mpp/include -I$D_SCHEME/mpp/include/mkp -I$D_SCHEME/mpp/sample"
+    show_env
+
+    echo 
+    echo --------------------------------
+}
+
+function set3520A(){
+    echo --------------------------------
+    if [ -e $devtool/bin ];then
+        echo
+        echo -e "\33[1m\33[41m 解除以前工具链接.\33[0m"
+        unlink $devtool/bin
+    fi
+    echo
+    echo -e "\33[1m\33[41m 切换到 3520a 开发工具链.\33[0m"
+    ln -s /opt/hisi-linux-nptl/arm-hisiv100-linux/target/bin/ $devtool/bin
+    echo 3520A >$devtool/devplatform
+
+    export_common
+    ##export D_SCHEME=$D_3520
+    ##export D_SERVER=$D_3512/source/Server
+    ##export D_LINUX=$D_3520/source/os/linux-2.6.14
+    ##export D_LIB_SO=$D_CMN_LIBS/3520
+    export D_SCHEME=$D_3520A
+    export D_SERVER=$D_TOP_HuaMai/Server/3520A
+    export D_LINUX=$D_3520A/osdrv/kernel/linux-3.0.y
+    export D_MODULE_SO=$D_CMN/rootfs/rootfs.module/3520A/lib
+    export D_LIB_SO=$D_CMN/rootfs/rootfs.static/3520A/lib
+    export INC_SDK="-I$D_SCHEME/pub/include -I$D_SCHEME/mpp/include_hi3520A -I$D_SCHEME/mpp/include_hi3520A/mkp -I$D_SCHEME/mpp/sample"
+}
+
+function set3518C(){
+    echo --------------------------------
+    if [ -e $devtool/bin ];then
+        echo
+        echo -e "\33[1m\33[41m 解除以前工具链接.\33[0m"
+        unlink $devtool/bin
+    fi
+    echo
+    echo -e "\33[1m\33[41m 切换到 3518C 开发工具链.\33[0m"
+    ln -s /opt/hisi-linux-nptl/arm-hisiv100-linux/target/bin/ $devtool/bin
+    echo 3518C >$devtool/devplatform
+
+    export_common
+    ##export D_SCHEME=$D_3520
+    ##export D_SERVER=$D_3512/source/Server
+    ##export D_LINUX=$D_3520/source/os/linux-2.6.14
+    ##export D_LIB_SO=$D_CMN_LIBS/3520
+    export D_SCHEME=$D_3518C
+    export D_SERVER=$D_TOP_HuaMai/Server/3518C
+    export D_LINUX=$D_3518C/osdrv/kernel/linux-3.0.y
+    export D_MODULE_SO=$D_CMN/rootfs/rootfs.module/3518C/lib
+    export D_LIB_SO=$D_CMN/rootfs/rootfs.static/3518C/lib
+    export INC_SDK="-I$D_SCHEME/pub/include -I$D_SCHEME/mpp/include -I$D_SCHEME/mpp/include/mkp -I$D_SCHEME/mpp/sample"
+    show_env
+
+    echo
+    echo --------------------------------
+}
+
+function set3515A(){
+    echo --------------------------------
+    if [ -e $devtool/bin ];then
+        echo
+        echo -e "\33[1m\33[41m 解除以前工具链接.\33[0m"
+        unlink $devtool/bin
+    fi
+    echo
+    echo -e "\33[1m\33[41m 切换到 3515A 开发工具链.\33[0m"
+    ln -s /opt/hisi-linux-nptl/arm-hisiv100-linux/target/bin/ $devtool/bin
+    echo 3515A >$devtool/devplatform
+
+    export_common
+    ##export D_SCHEME=$D_3520
+    ##export D_SERVER=$D_3512/source/Server
+    ##export D_LINUX=$D_3520/source/os/linux-2.6.14
+    ##export D_LIB_SO=$D_CMN_LIBS/3520
+    export D_SCHEME=$D_3515A
+    export D_SERVER=$D_TOP_HuaMai/Server/3515A
+    export D_LINUX=$D_3515A/osdrv/kernel/linux-3.0.y
+    export D_MODULE_SO=$D_CMN/rootfs/rootfs.module/3515A/lib
+    export D_LIB_SO=$D_CMN/rootfs/rootfs.static/3515A/lib
+    export INC_SDK="-I$D_SCHEME/pub/include -I$D_SCHEME/mpp/include -I$D_SCHEME/mpp/include/mkp -I$D_SCHEME/mpp/sample"
+    show_env
+
+    echo
+    echo --------------------------------
+}
+
+function gobuild(){
+    echo
+    echo -e "\33[1m\33[41m 切换到build目录.\33[0m"
+    echo
+    cd  $D_TOP_HuaMai/build/
+}
+
+function gocommon(){
+    echo
+    echo -e "\33[1m\33[41m 切换到Common生产开发目录.\33[0m"
+    echo
+    cd  $D_TOP_HuaMai/Common/
+}
+
+function go8161(){
+    echo
+    echo -e "\33[1m\33[41m 切换到8161生产开发目录.\33[0m"
+    echo
+    cd $D_8161
+}
+
+function go8180(){
+    echo
+    echo -e "\33[1m\33[41m 切换到8180生产开发目录.\33[0m"
+    echo 
+    cd $D_8180
+}
+
+function go8126(){
+    echo
+    echo -e "\33[1m\33[41m 切换到8126生产开发目录.\33[0m"
+    echo 
+    cd $D_8126
+}
+
+function go8126N(){
+    echo
+    echo -e "\33[1m\33[41m 切换到8126N生产开发目录.\33[0m"
+    echo 
+    cd $D_8126N
+}
+
+function go3512(){
+    echo
+    echo -e "\33[1m\33[41m 切换到3512生产开发目录.\33[0m"
+    echo 
+    cd $D_3512
+}
+
+function go3515(){
+    echo
+    echo -e "\33[1m\33[41m 切换到3515生产开发目录.\33[0m"
+    echo 
+    cd $D_3515
+}
+
+function go3520(){
+    echo
+    echo -e "\33[1m\33[41m 切换到3520生产开发目录.\33[0m"
+    echo 
+    cd $D_3520
+}
+
+function go3520A(){
+    echo
+    echo -e "\33[1m\33[41m 切换到3520A生产开发目录.\33[0m"
+    echo
+    cd $D_3520A
+}
+function go3518C(){
+    echo
+    echo -e "\33[1m\33[41m 切换到3518C生产开发目录.\33[0m"
+    echo
+    cd $D_3518C
+}
+
+function go3515A(){
+    echo
+    echo -e "\33[1m\33[41m 切换到3515A生产开发目录.\33[0m"
+    echo
+    cd $D_3515A
+}
+
+function gosdk(){
+    echo
+    echo -e "\33[1m\33[41m 切换到SDK生产开发目录.\33[0m"
+    echo
+    cd  /usr/src/IPCamera/SDK
+}
+
+function gohuamai(){
+    echo
+    echo -e "\33[1m\33[41m 切换到huamai生产开发目录.\33[0m"
+    echo
+    cd  /usr/src/IPCamera/HuaMai
+}
+
+function goserver(){
+    echo
+    echo -e "\33[1m\33[41m 切换到server生产开发目录.\33[0m"
+    echo
+    cd  /usr/src/IPCamera/HuaMai/Server
+}
+
+function gotarget(){
+    echo
+    echo -e "\33[1m\33[41m 切换到target生产开发目录.\33[0m"
+    echo
+    cd  /usr/src/IPCamera/HuaMai/target
+}
+
+function gouser(){
+    echo
+    echo -e "\33[1m\33[41m 切换到user生产开发目录.\33[0m"
+    echo
+    cd  /usr/src/IPCamera/HuaMai/user
+}
+
+function getcommondir(){
+    echo /usr/src/IPCamera/HuaMai/Common/
+}
+
+function get8161dir(){
+    echo $D_8161
+}
+
+function get8180dir(){
+    echo $D_8180
+}
+
+function get3512dir(){
+    echo $D_3512
+}
+
+function get3515dir(){
+    echo $D_3515
+}
+
+function get8126dir(){
+    echo $D_8126
+}
+
+function get8126Ndir(){
+    echo $D_8126N
+}
+
+function get3520dir(){
+    echo $D_3520
+}
+
+function get3520Adir(){
+    echo $D_3520A
+}
+
+function get3518Cdir(){
+    echo $D_3518C
+}
+
+function get3515Adir(){
+    echo $D_3515A
+}
+
+function get_server_dir(){
+    echo  /usr/src/IPCamera/HuaMai/Server/
+}
+
+function get_target_dir(){
+    echo  /usr/src/IPCamera/HuaMai/target/
+}
+
+function get_user_dir(){
+    echo  /usr/src/IPCamera/HuaMai/user/
+}
+
+function getsubdir(){
+    pwd | awk -F"arm-linux-2.6" '{printf $2}'
+}
+
+function get8161subdir(){
+    rootdir=`get8161dir`
+    subdir=`getsubdir`
+    echo $rootdir$subdir
+}
+
+function get8180subdir(){
+    rootdir=`get8180dir`
+    subdir=`getsubdir`
+    echo $rootdir$subdir
+}
+
+function get8126subdir(){
+    rootdir=`get8126dir`
+    subdir=`getsubdir`
+    echo $rootdir$subdir
+}
+
+function get8126Nsubdir(){
+    rootdir=`get8126Ndir`
+    subdir=`getsubdir`
+    echo $rootdir$subdir
+}
+
+function showtool(){
+    if [ ! -e $devtool/devplatform ];then
+        return 1
+    fi
+    
+    gmplat=""
+
+    cat $devtool/devplatform|grep 8161 >/dev/null 2>&1
+    if [ $? = 0 ];then
+        gmplat=8161
+    fi
+
+    cat $devtool/devplatform|grep 8180 >/dev/null 2>&1
+    if [ $? = 0 ];then
+        gmplat=8180
+    fi
+
+    cat $devtool/devplatform|grep 8126 >/dev/null 2>&1
+    if [ $? = 0 ];then
+        gmplat=8126
+    fi
+
+    
+    cat $devtool/devplatform|grep 3512 >/dev/null 2>&1
+    if [ $? = 0 ];then
+        gmplat=3512
+    fi
+
+    cat $devtool/devplatform|grep 3515 >/dev/null 2>&1
+    if [ $? = 0 ];then
+        gmplat=3515
+    fi
+    
+    cat $devtool/devplatform|grep 3520 >/dev/null 2>&1
+    if [ $? = 0 ];then
+        gmplat=3520
+    fi
+    
+    cat $devtool/devplatform|grep 3520A >/dev/null 2>&1
+    if [ $? = 0 ];then
+        gmplat=3520A
+    fi
+    
+    cat $devtool/devplatform|grep 3518C >/dev/null 2>&1
+    if [ $? = 0 ];then
+        gmplat=3518C
+    fi
+    
+    cat $devtool/devplatform|grep 3515A >/dev/null 2>&1
+    if [ $? = 0 ];then
+        gmplat=3515A
+    fi
+
+    echo -e "\33[1m\33[41m --------------------------------"
+    echo -e " 当前开发平台为 $gmplat"
+    echo
+    echo -e " 需要切换到8161开发，请运行set8161"
+    echo
+    echo -e " 需要切换到8161开发，请运行set8180"
+    echo
+    echo -e " 需要切换到8126开发，请运行set8126"
+    echo
+    echo -e " 需要切换到3512开发，请运行set3512"
+    echo
+    echo -e " 需要切换到3515开发，请运行set3515"
+    echo
+    echo -e " 需要切换到3520开发，请运行set3520"
+    echo
+    echo -e " 需要查看当前开发环境 ，请运行showtool"
+    echo 
+    echo -e " 需要切换到build目录，请运行gobuild"
+    echo 
+    echo -e " 需要切换到Common生产开发目录，请运行gocommon"
+    echo 
+    echo -e " 需要切换到8161生产开发目录，请运行go8161"
+    echo 
+    echo -e " 需要切换到8180生产开发目录，请运行go8180"
+    echo 
+    echo -e " 需要切换到8126生产开发目录，请运行go8126"
+    echo 
+    echo -e " 需要切换到3512生产开发目录，请运行go3512"
+    echo 
+    echo -e " 需要切换到3515生产开发目录，请运行go3515"
+    echo 
+    echo -e " 需要切换到3520生产开发目录，请运行go3520"
+    echo 
+    echo -e " 需要切换到3520A生产开发目录，请运行go3520a"
+    echo 
+    echo -e " 需要切换到3518C生产开发目录，请运行go3518C"
+    echo 
+    echo -e " 需要切换到3515A生产开发目录，请运行go3515A"    
+    echo 
+    echo -e " 需要切换到3515A生产开发目录，请运行goserver"
+    echo 
+    echo -e " 需要切换到3515A生产开发目录，请运行gotarget"    
+    echo 
+    echo -e " 需要切换到3515A生产开发目录，请运行gouser"    
+    echo -e " --------------------------------\33[0m"
+    
+    if [ -z "$gmplat" ];then
+        return 1
+    else
+        return 0
+    fi
+}
+
+export -f set8161 set8180 set8126 set3512 set3515 set3520 set3520A set3518C  set3515A gobuild gocommon goserver gotarget gouser go8161 go8180 go8126 go3512 go3515 go3520 go3520A go3518C go3515A getcommondir get8161dir get8180dir  get3512dir get8126dir get3515dir get3520dir get3518Cdir  get3515Adir get3520Adir get_target_dir get_server_dir get_user_dir getsubdir  get8161subdir get8180subdir get8126subdir  showtool
+
+showtool
+if [ $? = 1  ];then
+    set8161
+fi
+echo $PATH|grep "$devtool/bin" >/dev/null 2>&1
+if [ $? = 1 ];then
+    PATH=$PATH:$devtool/bin
+fi

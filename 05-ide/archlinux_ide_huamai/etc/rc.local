@@ -1,0 +1,12 @@
+#!/bin/sh
+
+ulimit -s 4096
+/opt/lampp/lampp start
+export LD_LIBRARY_PATH=/root/x1/:/opt/lampp/lib/mysql/
+/root/x1/Web/script/exec_service
+
+export JAVA_HOME=/usr/java/jdk1.6.0_20
+
+/root/apache-tomcat-6.0.24/bin/startup.sh
+ifconfig enp2s0 up
+redis-server /etc/redis.conf --protected-mode no&

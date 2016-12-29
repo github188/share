@@ -1,0 +1,16 @@
+function lee_install(){
+	cp -arvf ./lee_install /etc/
+	cp -arvf ./lee_svn /etc/
+	cp -arvf ./lee_tools /etc/
+	
+	source /etc/bash.bashrc
+	
+	###############################################
+    rm -rvf /usr/local/bin/svn_tool.sh
+    rm -rvf /usr/local/bin/auto_server_reboot.sh
+    
+	cp -arvf ./svn_tool.sh /usr/local/bin
+    #只要有就会执行
+	#cp -arvf ./auto_server_reboot.sh /usr/local/bin
+    
+}
