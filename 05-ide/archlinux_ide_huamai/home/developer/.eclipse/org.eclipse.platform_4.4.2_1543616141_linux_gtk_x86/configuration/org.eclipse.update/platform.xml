@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<config date="1436489743218" transient="false" shared_ur="file:configuration/org.eclipse.update/platform.xml" version="3.0">
-	<site updateable="true" url="file:/home/developer/.eclipse/org.eclipse.platform_4.4.2_1543616141_linux_gtk_x86/" enabled="true" policy="USER-EXCLUDE">
-	</site>
-</config>
